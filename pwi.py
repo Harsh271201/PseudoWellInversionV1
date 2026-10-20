@@ -1,20 +1,3 @@
-"""
-pwi.py  —  Probabilistic Waveform Inversion
-============================================
-Changes vs previous version
-----------------------------
-1. parallel_bmps now returns the full-length simulation result (totallayers
-   samples at required_si spacing) PLUS the per-trace TWT start so the
-   caller can resample to any output grid without information loss.
-2. _fix_width / FIXED_OUTPUT_COLS are kept only for legacy callers;
-   the main workflow no longer uses them.
-3. run_workflow writes an xarray Dataset → NetCDF instead of flat .asc files.
-   Every output variable is on the SAME TWT axis as the input seismic cube
-   (resampled back from the fine simulation grid).
-4. topbot_df is matched to traces by (il, xl) — extra rows are silently
-   ignored so the function works even if the horizon file covers a larger
-   area than the loaded seismic cube.
-"""
 
 import numpy as np
 import random
